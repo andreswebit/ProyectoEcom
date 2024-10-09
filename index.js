@@ -1,18 +1,18 @@
-const http = require('http');
 
-// Crear servidor
+const app = require('./src/app');
+
+const PORT = 3001;
+
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+
+const http = require("http");
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hola, este es tu servidor básico en Node.js');
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Hola, Mundo!");
 });
-
-// Definir el puerto en el que escuchará el servidor
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
-});
-
-// const server = require("./src/app");
-// const PORT = 3001;
-// server.listen(PORT, console.log(`Listen in port ${PORT}`));
+server.listen(3000, () => {
+    console.log("Servidor corriendo en http://localhost:3000");
+  });
