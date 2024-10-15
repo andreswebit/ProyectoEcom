@@ -14,7 +14,7 @@ const productsRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 
 // Usar rutas
-app.use('/products', productsRoutes);
+app.use('/products', productsRoutes); //ruta a base de datos
 app.use('/users', usersRoutes);
 
 // Exporta la aplicación para que sea utilizada en index.js
