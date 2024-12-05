@@ -1,23 +1,25 @@
+const express = require("express");
 
-
-const express = require('express');
-
-const { getProducts, addProduct, removeProduct, editProduct,  getProduct} = require('../handlers/productsHandlers');
+const {
+  getProducts,
+  addProduct,
+  removeProduct,
+  editProduct,
+  getProduct,
+} = require("../handlers/productsHandlers");
 //const { getProductById } = require('../controllers/productControllers');
 const router = express.Router();
 
-router.get('/', getProducts);
-router.get('/:id', getProduct);
+router.get("/", getProducts);
+router.get("/:id", getProduct);
 
 // Ruta para manejar solicitudes POST a "/products"
-router.post('/', addProduct);
+router.post("/", addProduct);
 
-router.put('/:id',editProduct);
+router.put("/:id", editProduct);
 
 //borrar
 
-router.delete('/:id', removeProduct);
-
-
+router.delete("/:id", removeProduct);
 
 module.exports = router;
