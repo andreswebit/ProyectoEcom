@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   getUsers,
-  getUser,
+  // getUser,
   addUser,
   editUser,
   removeUser,
@@ -15,15 +15,15 @@ const router = express.Router();
 router.get("/", getUsers);
 
 // Obtener un usuario por ID
-router.get("/:id", getUser);
+router.get("/:id", getUsers);
 
-// Agregar un usuario (solo admin)
+// Agregar un usuario
 router.post("/", addUser);
 
 // Actualizar un usuario por ID (solo admin)
 router.put("/:id", verifyToken, authorizeAdmin, editUser);
 
-// Eliminar un usuario por ID (solo admin)
+// Eliminar un usuario por ID (solo admin)  //actualizado consigna 8 req.parms
 router.delete("/:id", verifyToken, authorizeAdmin, removeUser);
 
 module.exports = router;

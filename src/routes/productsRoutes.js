@@ -5,21 +5,26 @@ const {
   addProduct,
   removeProduct,
   editProduct,
-  getProduct,
+  //getProduct,
 } = require("../handlers/productsHandlers");
+const verifyToken = require("../middleware/authMiddleware");
+const authorizeAdmin = require("../middleware/authorizeAdmin")
+
 //const { getProductById } = require('../controllers/productControllers');
 const router = express.Router();
 
 router.get("/", getProducts);
-router.get("/:id", getProduct);
+router.get("/:id", getProducts);
 
 // Ruta para manejar solicitudes POST a "/products"
-router.post("/", addProduct);
 
-router.put("/:id", editProduct);
+router.post("/", verifyToken, authorizeAdmin, addProduct); // Ruta protegida
+
+
+router.put("/:id", verifyToken, authorizeAdmin ,editProduct);
 
 //borrar
 
-router.delete("/:id", removeProduct);
+router.delete("/:id", verifyToken, authorizeAdmin, removeProduct);
 
 module.exports = router;
